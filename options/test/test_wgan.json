@@ -30,7 +30,7 @@
     , "path": {
       "root": "/workspace/cNormGAN-AC" // path to cNormGAN-AC directory
     , "results_dir": "../results/WGAN_tileStitch-32x64x64_A01-UCLA" // path to save normalized scans
-    , "pretrain_model_G": "/workspace/cNormGAN-AC/experiments_RSNA/train_WGAN_with-GP_tileStitch-32x64x64_A01/models/latest_G.pth" // path to weights
+    , "pretrain_model_G": "/workspace/cNormGAN-AC/experiments/train_WGAN_with-GP_tileStitch-32x64x64_A01/models/latest_G.pth" // path to weights
     }
   
     , "network_G": {
