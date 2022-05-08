@@ -1,0 +1,50 @@
+{
+  "name": "test_cSNGAN-AuxLoss_tileStitch-32x64x64_A01"
+  , "model":"srgan"
+  , "scale": 1.0
+  , "gpu_ids": [1]
+  , "precision": "fp16"
+  , "result_format" : "nrrd"
+  , "need_label": true
+  , "data_merged": true
+  
+    , "datasets": {
+        "val": {
+        "data_type": "h5"
+        , "name": "test_st1.0_norm"
+        , "uids_path": "/path_to_txt_file_with_name_of_cases_in_test_set.txt"
+        , "dataroot_HR": "/path_to_reference_cases"
+        , "dataroot_LR": "/path_to_unnormalized_cases"
+        //, "need_voxels": false
+        , "need_voxels": {
+            "tile_x_y": true
+          , "tile_size": 64
+        }
+        , "slice_size": 32
+        , "overlap_slice_size": 4
+        , "LR_slice_size": 32
+        , "LR_size": 64
+      }
+    }
+  
+    , "path": {
+      "root": "/workspace/cNormGAN-AC" // path to cNormGAN-AC directory
+    , "results_dir": "../results/cSNGAN-AuxLoss_tileStitch-32x64x64_A01" // path to save normalized scans
+    , "pretrain_model_G": "/workspace/cNormGAN-AC/experiments/train_cSNGAN_AuxLoss_tileStitch-32x64x64_A01/models/latest_G.pth" // path to weights
+    }
+  
+    , "network_G": {
+      "which_model_G": "sr_resnet"
+      , "norm_type": null
+      , "nf": 64
+      , "nb": 8
+      , "in_nc": 1
+      , "out_nc": 1
+      // , "need_embed": false
+      , "need_embed": {
+          "kernel_class": 3
+        , "dose_class": 3
+      }
+    }
+  
+  }
